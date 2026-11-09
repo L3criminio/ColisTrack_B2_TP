@@ -47,9 +47,9 @@ Vérifier les transitions refusées, l'annulation et l'absence d'e-mail dans les
 ## Références de livraison et état de revue
 
 - Dépôt -> `L3criminio/ColisTrack_B2_TP`.
-- Branche -> `audit/corrections-metier`, cible -> `main` du même fork.
+- Branche -> `L3criminio:audit/corrections-metier`, cible -> `jcrangon/ColisTrack_B2_TP:main`.
 - Un commit par correctif, plus les commits documentaires.
-- Lien de PR -> https://github.com/L3criminio/ColisTrack_B2_TP/pull/1 (brouillon).
+- Lien de PR -> https://github.com/jcrangon/ColisTrack_B2_TP/pull/6 (brouillon).
 - Revue par un pair -> en attente ; aucune fusion effectuée.
 
 ## Mises à jour après revue
