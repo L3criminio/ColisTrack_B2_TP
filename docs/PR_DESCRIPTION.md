@@ -2,7 +2,7 @@
 
 ## Pourquoi cette PR ?
 
-Des données invalides passaient dans les tarifs, les étapes de livraison pouvaient être contournées et les vues publiques montraient l'e-mail du destinataire.
+Le suivi ColisTrack passait initialement ses sept tests JavaScript et ses trois vérifications PHP, mais plusieurs règles contractuelles n’étaient pas respectées. En particulier, un colis pouvait sauter des étapes de livraison, être annulé après mise en transit et exposer le courriel du destinataire dans des vues publiques. La tarification acceptait également des poids ou des zones interdits. Cette PR corrige ces écarts identifiés dans le rapport d’audit A-01 à A-05, sans modifier les tarifs nominaux ni les libellés des statuts.
 
 ## Règles métier couvertes
 
