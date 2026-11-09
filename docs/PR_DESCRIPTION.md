@@ -1,4 +1,4 @@
-# [ColisTrack] Corriger les règles métier et les données publiques
+# [ColisTrack] Titre précis de ma PR — à compléter
 
 ## Pourquoi cette PR ?
 
@@ -49,7 +49,7 @@ Vérifier les transitions refusées, l'annulation et l'absence d'e-mail dans les
 - Dépôt -> `L3criminio/ColisTrack_B2_TP`.
 - Branche -> `audit/corrections-metier`, cible -> `main` du même fork.
 - Un commit par correctif, plus les commits documentaires.
-- Lien de PR -> à renseigner après création.
+- Lien de PR -> https://github.com/L3criminio/ColisTrack_B2_TP/pull/1 (brouillon).
 - Revue par un pair -> en attente ; aucune fusion effectuée.
 
 ## Mises à jour après revue
