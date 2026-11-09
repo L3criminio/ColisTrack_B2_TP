@@ -18,8 +18,8 @@ export function createShipment({ reference, recipientEmail, weightKg, zone }) {
 }
 
 export function advanceShipment(shipment, nextStatus) {
-  if (shipment.status === SHIPMENT_STATUSES.DELIVERED) {
-    throw new Error("A delivered shipment cannot be changed");
+  if (shipment.status === SHIPMENT_STATUSES.DELIVERED || shipment.status === SHIPMENT_STATUSES.CANCELED) {
+    throw new Error("Un colis livré ou annulé ne peut plus évoluer");
   }
 
   const nextStatusByStatus = {

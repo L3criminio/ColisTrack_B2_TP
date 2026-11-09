@@ -60,3 +60,22 @@ test("CT-02 : impossible de répéter une étape", () => {
   assert.throws(() => advanceShipment(prepared, "prepared"), Error);
   assert.deepEqual(prepared, before);
 });
+
+for (const status of ["delivered", "canceled"]) {
+  test(`CT-03 : ${status} bloque toute évolution sans modifier le colis`, () => {
+    let shipment = sample();
+    if (status === "canceled") {
+      shipment = cancelShipment(shipment);
+    } else {
+      for (const step of ["prepared", "in_transit", "delivered"]) {
+        shipment = advanceShipment(shipment, step);
+      }
+    }
+    const before = structuredClone(shipment);
+
+    for (const target of Object.values(SHIPMENT_STATUSES)) {
+      assert.throws(() => advanceShipment(shipment, target), Error);
+      assert.deepEqual(shipment, before);
+    }
+  });
+}
