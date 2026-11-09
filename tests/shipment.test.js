@@ -79,3 +79,27 @@ for (const status of ["delivered", "canceled"]) {
     }
   });
 }
+
+for (const status of Object.values(SHIPMENT_STATUSES)) {
+  test(`CT-04 : annulation depuis ${status}`, () => {
+    let shipment = sample();
+    if (status === "canceled") {
+      shipment = cancelShipment(shipment);
+    } else {
+      for (const step of ["prepared", "in_transit", "delivered"]) {
+        if (shipment.status === status) break;
+        shipment = advanceShipment(shipment, step);
+      }
+    }
+    const before = structuredClone(shipment);
+
+    if (status === "created" || status === "prepared") {
+      const canceled = cancelShipment(shipment);
+      assert.equal(canceled.status, "canceled");
+      assert.deepEqual(canceled.history, [...before.history, "canceled"]);
+    } else {
+      assert.throws(() => cancelShipment(shipment), Error);
+    }
+    assert.deepEqual(shipment, before);
+  });
+}

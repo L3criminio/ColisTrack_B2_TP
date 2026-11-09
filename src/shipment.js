@@ -39,8 +39,8 @@ export function advanceShipment(shipment, nextStatus) {
 }
 
 export function cancelShipment(shipment) {
-  if (shipment.status === SHIPMENT_STATUSES.DELIVERED) {
-    throw new Error("A delivered shipment cannot be canceled");
+  if (shipment.status !== SHIPMENT_STATUSES.CREATED && shipment.status !== SHIPMENT_STATUSES.PREPARED) {
+    throw new Error("Seul un colis créé ou préparé peut être annulé");
   }
 
   return {
