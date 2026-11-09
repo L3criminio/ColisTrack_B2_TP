@@ -22,13 +22,13 @@ export function advanceShipment(shipment, nextStatus) {
     throw new Error("A delivered shipment cannot be changed");
   }
 
-  const possibleStatuses = [
-    SHIPMENT_STATUSES.PREPARED,
-    SHIPMENT_STATUSES.IN_TRANSIT,
-    SHIPMENT_STATUSES.DELIVERED,
-  ];
-  if (!possibleStatuses.includes(nextStatus)) {
-    throw new Error("Unknown target status");
+  const nextStatusByStatus = {
+    created: SHIPMENT_STATUSES.PREPARED,
+    prepared: SHIPMENT_STATUSES.IN_TRANSIT,
+    in_transit: SHIPMENT_STATUSES.DELIVERED,
+  };
+  if (nextStatus !== nextStatusByStatus[shipment.status]) {
+    throw new Error("Cette transition n'est pas autorisée");
   }
 
   return {
