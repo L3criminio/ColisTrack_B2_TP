@@ -15,8 +15,29 @@ Référence de départ (commit) : commit documentaire
 
 ## Dette différée et justification
 
+- **Objet:** absence de CI distante sur Github.
+- **Risque:** Un commit peut eêre poussé sans lancer les tests JS et PHP
+- **Mesure Compréhensible:** Execution manuelle et publication des sorties dans la PR:
+  - `npm test`
+  - `php tests/TrackingPresenter.test.php`
+  - `php -l src/php/TrackingPresenter.php`
+  - `git diff --check`
+- **Priorité:** P2.
+- **Déclencheur:** Avant toute mise en production
+- **Justification:** Aucun des defauts P0 n'est différé. La dette porte uniquement sur l'automatisation des controls, pas sur les corrections de confidentialité. 
 ## Contrôles avant modification
+- Point S0 : `npm test` -> 7 tests JavaScript réussis, 0 échec.
+- Point S0 : `php tests/TrackingPresenter.test.php` -> `PHP : 3 vérifications conformes`.
+- Point S0 : `php -l src/php/TrackingPresenter.php` -> syntaxe valide.
+- La réussite de ces tests **ne prouve pas** CT-02/03/04/06/07/08.
 
 ## Contrôles après modification
+- `npm test` -> 21 tests JavaScript réussis, 0 échec.
+- `php tests/TrackingPresenter.test.php` -> `PHP : 5 vérifications conformes`.
+- `php -l src/php/TrackingPresenter.php` -> syntaxe PHP valide.
+- `git diff --check` -> pas d’erreur de whitespace dans le patch.
+- Revue pédagogique optionnelle S4+ : 22 JS + 6 PHP après deux tests complémentaires demandés par le relecteur.
+
 
 ## Limites et risques résiduels
+Les suites présentées couvrent les scénarios énumérés par les règles et les exercices, **pas l’ensemble infini des entrées possibles**. L’absence de CI distante reste une dette documentée ; GitHub dépend des accès et permissions réellement attribués. Aucune URL de PR ne peut être préremplie par un corrigé local.
